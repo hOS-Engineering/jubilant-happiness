@@ -20,16 +20,42 @@
                 font-weight: bold;
                 margin: 20px 0;
             }
+            .udid-button {
+                background: #34c759;
+            }
+            .divider {
+                margin: 40px 0;
+                border-top: 1px solid #ccc;
+            }
+            .section {
+                margin: 20px 0;
+            }
         </style>
     </head>
     <body>
-        <h1>Install hOS</h1>
-        <a
-            class="install-button"
-            href="itms-services://?action=download-manifest&url=https://hos-engineering.github.io/jubilant-happiness/app/manifest.plist"
-        >
-            Tap to Install
-        </a>
-        <p>Tap the button above to install the app on your iOS device.</p>
+        <div class="section">
+            <h1>Install hOS</h1>
+            <a
+                class="install-button"
+                href="itms-services://?action=download-manifest&url=https://hos-engineering.github.io/jubilant-happiness/app/manifest.plist"
+            >
+                Tap to Install
+            </a>
+            <p>Tap the button above to install the app on your iOS device.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2>First Time User?</h2>
+            <p>
+                If this is your first time, we need your device ID (UDID) to
+                authorize your device.
+            </p>
+            <a class="button udid-button" href="https://www.get-udid.io">
+                Get Your Device ID (UDID)
+            </a>
+            <p>Please send the UDID to the developer to get access.</p>
+        </div>
     </body>
 </html>
