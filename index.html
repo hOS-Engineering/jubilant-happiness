@@ -10,7 +10,7 @@
                 text-align: center;
                 padding: 20px;
             }
-            .install-button {
+            .button {
                 display: inline-block;
                 padding: 15px 30px;
                 background: #007aff;
@@ -36,7 +36,7 @@
         <div class="section">
             <h1>Install hOS</h1>
             <a
-                class="install-button"
+                class="button"
                 href="itms-services://?action=download-manifest&url=https://hos-engineering.github.io/jubilant-happiness/app/manifest.plist"
             >
                 Tap to Install
@@ -52,9 +52,11 @@
                 If this is your first time, we need your device ID (UDID) to
                 authorize your device.
             </p>
-            <a class="button udid-button" href="https://www.get-udid.io">
-                Get Your Device ID (UDID)
+            <a class="button udid-button" href="udid_signed.mobileconfig">
+                Get Your Device UDID
             </a>
+            <p>After installing the profile, find your UDID in:</p>
+            <p>Settings → General → About → Certificate Trust Settings</p>
             <p>Please send the UDID to the developer to get access.</p>
         </div>
     </body>
