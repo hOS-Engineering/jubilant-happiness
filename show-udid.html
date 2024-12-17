@@ -1,58 +1,158 @@
 <!doctype html>
 <html>
     <head>
-        <title>Device Information</title>
+        <title>Device ID Retrieved</title>
+        <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>
             body {
-                font-family: -apple-system, system-ui, BlinkMacSystemFont;
+                font-family: -apple-system, sans-serif;
+                text-align: center;
                 padding: 20px;
-                line-height: 1.6;
             }
-            .container {
+            .udid-display {
+                background: #f5f5f7;
+                padding: 20px;
+                border-radius: 12px;
+                margin: 20px auto;
+                max-width: 600px;
+            }
+            .udid-value {
+                font-family: monospace;
+                font-size: 1.1em;
+                word-break: break-all;
+                padding: 15px;
+                background: white;
+                border-radius: 8px;
+                margin: 10px 0;
+                border: 1px solid #e0e0e0;
+            }
+            .copy-button {
+                background: #007aff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 8px;
+                font-weight: bold;
+                cursor: pointer;
+                margin: 10px 0;
+            }
+            .copy-button:active {
+                background: #0051a8;
+            }
+            .success-icon {
+                color: #34c759;
+                font-size: 48px;
+                margin: 20px 0;
+            }
+            .divider {
+                margin: 40px 0;
+                border-top: 1px solid #ccc;
+            }
+            .section {
+                margin: 20px 0;
+            }
+            .instructions {
+                text-align: left;
                 max-width: 600px;
                 margin: 0 auto;
             }
-            .info-box {
-                background: #f5f5f7;
-                padding: 15px;
-                border-radius: 10px;
-                margin: 10px 0;
+            .instructions ol {
+                padding-left: 20px;
             }
-            .udid {
-                word-break: break-all;
-                font-family: monospace;
+            .instructions li {
+                margin: 15px 0;
+                line-height: 1.5;
+            }
+            .path {
+                color: #666;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+            .active-step {
+                background: #f0f8ff;
+                padding: 15px;
+                border-radius: 8px;
+                border-left: 4px solid #007aff;
             }
         </style>
-    </head>
-    <body>
-        <div class="container">
-            <h2>Device Information</h2>
-            <div class="info-box">
-                <h3>UDID:</h3>
-                <p class="udid" id="udid">Loading...</p>
-            </div>
-            <div class="info-box">
-                <h3>Product:</h3>
-                <p id="product">Loading...</p>
-            </div>
-            <div class="info-box">
-                <h3>Version:</h3>
-                <p id="version">Loading...</p>
-            </div>
-            <p>Please copy this UDID and send it to the developer.</p>
-        </div>
-
+        <script>
+            function copyUDID() {
+                const udid = document.getElementById("udid").innerText;
+                navigator.clipboard.writeText(udid);
+                const button = document.getElementById("copyButton");
+                button.innerText = "Copied!";
+                setTimeout(() => {
+                    button.innerText = "Copy Device ID";
+                }, 2000);
+            }
+        </script>
         <script>
             window.onload = function () {
                 const params = new URLSearchParams(window.location.search);
                 document.getElementById("udid").textContent =
                     params.get("udid") || "Not found";
-                document.getElementById("product").textContent =
-                    params.get("product") || "Not found";
-                document.getElementById("version").textContent =
-                    params.get("version") || "Not found";
             };
         </script>
+    </head>
+    <body>
+        <div class="section">
+            <div class="success-icon">✓</div>
+            <h1>Profile Installed Successfully</h1>
+
+            <div class="udid-display">
+                <h2>Your Device ID</h2>
+                <div id="udid" class="udid-value">Loading...</div>
+                <button
+                    onclick="copyUDID()"
+                    id="copyButton"
+                    class="copy-button"
+                >
+                    Copy Device ID
+                </button>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section">
+            <h2>Next Steps</h2>
+            <div class="instructions">
+                <ol start="3">
+                    <li class="active-step">
+                        Enable Developer Mode on your device
+                        <div class="path">
+                            Location: Settings → Privacy & Security → Developer
+                            Mode → Toggle On
+                        </div>
+                    </li>
+                    <li>
+                        Restart your device when prompted
+                        <div class="path">
+                            Your device will automatically prompt you to restart
+                        </div>
+                    </li>
+                    <li>
+                        Wait for developer authorization
+                        <div class="path">
+                            The developer will notify you when access is granted
+                        </div>
+                    </li>
+                    <li>
+                        Return to the installation page and tap "Install App"
+                        button
+                        <div class="path">
+                            Location: Top of the installation page
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="section">
+            <p>Need help?</p>
+            <a href="index.html#faq" class="help-button">View FAQ Section</a>
+        </div>
     </body>
 </html>

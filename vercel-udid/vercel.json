@@ -10,10 +10,6 @@
         "Access-Control-Allow-Headers": "*",
         "Content-Type": "text/xml"
       }
-    },
-    {
-      "src": "/public/show-udid.html",
-      "methods": ["GET"]
     }
   ]
 }

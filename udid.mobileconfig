@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>PayloadContent</key>
+        <dict>
+            <key>URL</key>
+            <string>https://vercel-udid.vercel.app/api/collect-udid</string>
+            <key>DeviceAttributes</key>
+            <array>
+                <string>UDID</string>
+                <string>DEVICE_NAME</string>
+                <string>VERSION</string>
+                <string>PRODUCT</string>
+            </array>
+        </dict>
+        <key>PayloadOrganization</key>
+        <string>hOS Inc.</string>
+        <key>PayloadDisplayName</key>
+        <string>Get Device UDID</string>
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadUUID</key>
+        <string>F4301630-41C7-4622-971D-872B234B96DB</string>
+        <key>PayloadIdentifier</key>
+        <string>com.hos.challenge.profile</string>
+        <key>PayloadDescription</key>
+        <string>This profile will help retrieve your device UDID</string>
+        <key>PayloadType</key>
+        <string>Profile Service</string>
+    </dict>
+</plist>

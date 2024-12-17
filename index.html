@@ -20,6 +20,16 @@
                 font-weight: bold;
                 margin: 20px 0;
             }
+            .nav-button {
+                padding: 10px 20px;
+                margin: 0 10px;
+                background: #f2f2f2;
+                color: #333;
+                font-size: 0.9em;
+            }
+            .nav-button:hover {
+                background: #e5e5e5;
+            }
             .udid-button {
                 background: #34c759;
             }
@@ -29,35 +39,198 @@
             }
             .section {
                 margin: 20px 0;
+                scroll-margin-top: 20px;
+            }
+            .instructions {
+                text-align: left;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .instructions ol {
+                padding-left: 20px;
+            }
+            .instructions li {
+                margin: 15px 0;
+                line-height: 1.5;
+            }
+            .path {
+                color: #666;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+            .faq {
+                text-align: left;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .faq-item {
+                margin-bottom: 25px;
+            }
+            .faq-question {
+                font-weight: bold;
+                margin-bottom: 8px;
+                color: #1a1a1a;
+            }
+            .faq-answer {
+                color: #404040;
+                line-height: 1.5;
+            }
+            .nav-section {
+                position: sticky;
+                top: 0;
+                background: white;
+                padding: 10px 0;
+                z-index: 100;
+            }
+            html {
+                scroll-behavior: smooth;
             }
         </style>
     </head>
     <body>
+        <div class="nav-section">
+            <a href="#instructions" class="button nav-button">Instructions</a>
+            <a href="#faq" class="button nav-button">FAQ</a>
+        </div>
+
         <div class="section">
             <h1>Install hOS</h1>
-            <a
-                class="button"
-                href="itms-services://?action=download-manifest&url=https://hos-engineering.github.io/jubilant-happiness/app/manifest.plist"
-            >
-                Tap to Install
-            </a>
-            <p>Tap the button above to install the app on your iOS device.</p>
+
+            <div class="section">
+                <h2>Step 1: Get Device UDID</h2>
+                <a class="button udid-button" href="udid_signed.mobileconfig">
+                    Get Device UDID
+                </a>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h2>Step 2: Install App</h2>
+                <a
+                    class="button"
+                    href="itms-services://?action=download-manifest&url=hos-engineering.github.io/jubilant-happiness/app/manifest.plist"
+                >
+                    Install App
+                </a>
+            </div>
         </div>
 
         <div class="divider"></div>
 
-        <div class="section">
-            <h2>First Time User?</h2>
-            <p>
-                If this is your first time, we need your device ID (UDID) to
-                authorize your device.
-            </p>
-            <a class="button udid-button" href="udid_signed.mobileconfig">
-                Get Your Device UDID
-            </a>
-            <p>After installing the profile, find your UDID in:</p>
-            <p>Settings → General → About → Certificate Trust Settings</p>
-            <p>Please send the UDID to the developer to get access.</p>
+        <div id="instructions" class="section">
+            <h2>Installation Instructions</h2>
+            <div class="instructions">
+                <ol>
+                    <li>
+                        Tap "Get Device ID" button above to install the profile
+                        <div class="path">Location: Right on this page</div>
+                    </li>
+                    <li>
+                        Install the profile in your device settings
+                        <div class="path">
+                            Location: Settings → General → VPN & Device
+                            Management
+                        </div>
+                    </li>
+                    <li>
+                        Enable Developer Mode on your device
+                        <div class="path">
+                            Location: Settings → Privacy & Security → Developer
+                            Mode → Toggle On
+                        </div>
+                    </li>
+                    <li>
+                        Restart your device when prompted
+                        <div class="path">
+                            Your device will automatically prompt you to restart
+                        </div>
+                    </li>
+                    <li>
+                        Wait for developer authorization
+                        <div class="path">
+                            The developer will notify you when access is granted
+                        </div>
+                    </li>
+                    <li>
+                        Return to this page and tap "Install App" button at the
+                        top
+                        <div class="path">Location: Top of this page</div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div id="faq" class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What is a UDID and why do you need it?
+                    </div>
+                    <div class="faq-answer">
+                        A UDID (Unique Device Identifier) is a specific code
+                        that identifies your iOS device. We need this to
+                        register your device with Apple for testing purposes, as
+                        this app is not available on the App Store. This is a
+                        standard requirement for installing development apps on
+                        iOS devices.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is it safe to install this profile and enable Developer
+                        Mode?
+                    </div>
+                    <div class="faq-answer">
+                        Yes, it's safe. The profile is only used to obtain your
+                        device's UDID. Developer Mode is an Apple feature that
+                        allows installation of apps from sources other than the
+                        App Store. You can disable Developer Mode at any time
+                        after installation if desired.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does the authorization process take?
+                    </div>
+                    <div class="faq-answer">
+                        Once you send your UDID to the developer, authorization
+                        typically takes 1-24 hours. You'll receive a
+                        notification from your coach when your device has been
+                        authorized and you can proceed with the installation.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Why do I need to restart my device?
+                    </div>
+                    <div class="faq-answer">
+                        Restarting is required by iOS when enabling Developer
+                        Mode. This is a security feature implemented by Apple to
+                        ensure you're intentionally enabling this mode. You'll
+                        only need to do this once.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Will this affect my device's warranty or security?
+                    </div>
+                    <div class="faq-answer">
+                        No, installing this profile and enabling Developer Mode
+                        won't affect your device's warranty or compromise its
+                        security. These are standard Apple features used by
+                        developers and beta testers. You can remove the profile
+                        and disable Developer Mode at any time.
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
